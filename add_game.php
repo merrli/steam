@@ -26,8 +26,11 @@
             <label for="gameName">Enter the game  name:</label>
             <input type="text" id="gameName" name="gameName">
             <?php
-                $queryGame = "SELECT game_id, game_title FROM game";
-                $result = mysqli_query($connection, $queryGame);
+                $queryGenre = "SELECT genre_id, genre_name FROM genre";
+                $result = mysqli_query($connection, $queryGenre);
+
+                $queryRating = "SELECT age_rating_id, age_rating_name FROM age_rating";
+                $result2 = mysqli_query($connection, $queryRating);
             ?>
 
             <label for="gameGenre">Genre:</label>
@@ -41,7 +44,7 @@
             <label for="gameRating">Age Rating:</label>
             <select id="gameRating" name="gameRating">
                 <option value="--">-- Select a Rating --</option>
-                <?php while($result_set = mysqli_fetch_array($result)){ ?>
+                <?php while($result_set = mysqli_fetch_array($result2)){ ?>
                 <option value="<?php echo $result_set["age_rating_id"] ?>"><?php echo $result_set["age_rating_name"] ?></option>
                 <?php } ?>
             </select>

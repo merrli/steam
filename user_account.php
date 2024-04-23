@@ -8,13 +8,14 @@
 </head>
 <body>
     <header>
-        <h1>Create a Recipe</h1>
+        <h1>Create a User</h1>
     </header>
     
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create a User</a></li>
+            <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>

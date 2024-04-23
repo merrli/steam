@@ -1,4 +1,5 @@
-<section>    
+<?php/*
+    <section>    
         <form action="#" method="post" id="createRecipeFormPrimaryInfo">
                 <h2>Recipe Ingredients</h2>
                 <label for="recipeIngredient">Ingredient:</label>
@@ -35,3 +36,45 @@
                 <button type="submit" name="submit_recipe" value="submitRecipe">Finish Recipe</button>
         </form>
     </section>
+*/?>
+
+<?php require_once("includes/connection.php"); ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Steam - User Account</title>
+</head>
+<body>
+    <header>
+        <h1>Create a Dev</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
+            <li><a href ="game_dev_account.php">Create a Dev</a></li>
+            <li><a href="search_recipe.php">Search a Recipe</a></li>         
+            <li><a href="ingredients_management.php">Ingredients Management</a></li>
+        </ul>
+    </nav>
+    <section>
+        <form action="game_dev_creation.php" method="post" id="createNewDev">
+                <h2>Create a user</h2>
+                <label for="studioName">Enter your Studio Name:</label>
+                <input type="text" id="studioName" name="studioName" required>
+
+
+                <button type="submit" name="next" value="next">Next</button>
+        </form>
+    </section> 
+    
+    
+    
+    <footer>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
+    </footer>
+</body>
+</html>

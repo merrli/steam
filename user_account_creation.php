@@ -17,7 +17,6 @@
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href="add_game.php">Add a Game</a></li>
-            <li><a href="search_recipe.php">Search a Recipe</a></li>     
         </ul>
     </nav>
     <?php
@@ -36,6 +35,7 @@
             $query .= "(user_first_name, user_last_name, user_username, user_displayname, user_email, user_shipping_address) ";
             $query .= "VALUES ";
             $query .= "('$first_name', '$last_name', '$user_name', '$display_name', '$email', '$address'); ";
+            
 
         session_start();
         $_SESSION["insert_user_query"] = $query;

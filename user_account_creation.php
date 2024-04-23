@@ -15,6 +15,7 @@
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create a User</a></li>
+            <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>

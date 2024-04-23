@@ -15,6 +15,7 @@
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create a User</a></li>
+            <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>
@@ -23,22 +24,18 @@
 
         //this will handle the preparation of the first recipe information
         if(isset($_POST["next"]) && $_POST["next"] == "next"){
-            $user_name = $_POST["userName"];
-            $display_name = $_POST["displayName"];
-            $first_name = $_POST["firstName"];
-            $last_name = $_POST["lastName"];
-            $email = $_POST["email"]; 
-            $address = $_POST["shippingAddress"];
+            $studio_name = $_POST["studioName"];
+            $studio_country = $_POST["country"];
 
             $query = " ";
-            $query .= "INSERT INTO user ";
-            $query .= "(user_first_name, user_last_name, user_username, user_displayname, user_email, user_shipping_address) ";
+            $query .= "INSERT INTO gamedev ";
+            $query .= "(gamedev_name, gamedev_creation_date, gamedev_country) ";
             $query .= "VALUES ";
-            $query .= "('$first_name', '$last_name', '$user_name', '$display_name', '$email', '$address'); ";
+            $query .= "('$studio_name', NOW(),'$studio_country'); ";
 
         session_start();
-        $_SESSION["insert_user_query"] = $query;
-        $_SESSION["user_name"] = $user_name;
+        $_SESSION["insert_dev_query"] = $query;
+        $_SESSION["studioName"] = $studio_name;
         }
         /*elseif(isset($_POST["submit_recipe"]) && $_POST["submit_recipe"] == "submitRecipe"){
             $ingredient_id = $_POST["recipeIngredient"];
@@ -72,7 +69,7 @@
 
         if($result){
             $_SESSION["insert_user_query"] = "";
-            $_SESSION["user_name"] = "";
+            $_SESSION["studioName"] = "";
 
             echo "<section><h1>Welcome!</h1></section>";
         }

@@ -1,8 +1,8 @@
 <?php
 $dbhost = "localhost";
-$dbuser = "RBUSER";
+$dbuser = "TwinkleOtter";
 $dbpass = "123456";
-$dbname = "recipe_book";
+$dbname = "steam";
 
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 ?>

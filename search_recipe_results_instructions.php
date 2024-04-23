@@ -12,7 +12,7 @@
      <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="create_recipe.php">Create Recipe</a></li>
+            <li><a href="user_account.php">Create Recipe</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>

@@ -4,7 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Recipe Book - Create a Recipe</title>
+    <title>Steam - User Account</title>
 </head>
 <body>
     <header>
@@ -14,7 +14,7 @@
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="create_recipe.php">Create Recipe</a></li>
+            <li><a href="user_account.php">Create Recipe</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>

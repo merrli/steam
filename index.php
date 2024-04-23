@@ -2,17 +2,17 @@
 <html>
 <head>  
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Recipe Book - Home Page</title>
+    <title>Steam - Home Page</title>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Recipe Book Page</h1>
+        <h1>Steam Bootleg</h1>
     </header>
     
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="user_account.php">Create Recipe</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>

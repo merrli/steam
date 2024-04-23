@@ -4,7 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Recipe Book - Create a Recipe</title>
+    <title>Steam - Create a User</title>
 </head>
 <body>
     <header>

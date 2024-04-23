@@ -14,34 +14,32 @@
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="user_account.php">Create Recipe</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>
     </nav>
     <section>
-        <form action="create_recipe_add_ingredients.php" method="post" id="createRecipeFormPrimaryInfo">
-                <h2>Recipe Primary Information</h2>
-                <label for="recipeName">Recipe Name:</label>
-                <input type="text" id="recipeName" name="recipeName" required>
+        <form action="user_account_creation.php" method="post" id="createNewUser">
+                <h2>Create a user</h2>
+                <label for="userName">Enter a username:</label>
+                <input type="text" id="userName" name="userName" required>
 
-                <?php
-                    $queryCat = "SELECT category_id, category_name FROM category";
-                    $result = mysqli_query($connection, $queryCat);
+                <label for="displayName">Enter a display name:</label>
+                <input type = "text" id = "displayName" name = "displayName" required>
 
-                ?>
-                 <label for="recipeCategory">Recipe Category:</label>
-                <select id="recipeCategory" name="recipeCategory" required>
-                    <option value="--">-- Select a Category --</option>
+                <label for="firstName">Enter your first name:</label>
+                <input type = "text" id = "firstName" name = "firstName" required>
 
-                    <?php while($result_set = mysqli_fetch_array($result)){ ?>
-                    <option value="<?php echo $result_set["category_id"] ?>"><?php echo $result_set["category_name"] ?></option>
-                    <?php } ?>
+                <label for="lastName">Enter your last name:</label>
+                <input type = "text" id = "lastName" name = "lastName" required>
 
-                </select>
+                <label for="email">Enter your email:</label>
+                <input type = "text" id = "email" name = "email" required>
 
-                <label for="recipeInstructions">Recipe Instructions</label>
-                <textarea id="recipeInstructions" name="recipeInstructions" rows="4"></textarea>
+                <label for="shippingAddress">Enter your address:</label>
+                <input type = "text" id = "shippingAddress" name = "shippingAddress" required>
+
                 <button type="submit" name="next" value="next">Next</button>
         </form>
     </section> 
@@ -49,7 +47,7 @@
     
     
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

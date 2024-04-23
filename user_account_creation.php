@@ -8,13 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Create a Recipe</h1>
+        <h1>Create a user</h1>
     </header>
     
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="user_account.php">Create Recipe</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
             <li><a href="search_recipe.php">Search a Recipe</a></li>         
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>
@@ -23,43 +23,24 @@
 
         //this will handle the preparation of the first recipe information
         if(isset($_POST["next"]) && $_POST["next"] == "next"){
-            $recipe_name = $_POST["recipeName"];
-            $category_id = $_POST["recipeCategory"];
-            $recipe_instructions = $_POST["recipeInstructions"];
+            $user_name = $_POST["userName"];
+            $display_name = $_POST["displayName"];
+            $first_name = $_POST["firstName"];
+            $last_name = $_POST["lastName"];
+            $email = $_POST["email"]; 
+            $address = $_POST["shippingAddress"];
 
             $query = " ";
-            $query .= "INSERT INTO recipe ";
-            $query .= "(recipe_name, recipe_instructions, category_id, recipe_creation_date, recipe_last_edit_date) ";
+            $query .= "INSERT INTO user ";
+            $query .= "(user_first_name, user_last_name, user_username, user_displayname, user_email, user_shipping_address) ";
             $query .= "VALUES ";
-            $query .= "('$recipe_name', '$recipe_instructions', '$category_id', NOW(), NOW()); ";
+            $query .= "('$first_name', '$last_name', '$user_name', '$display_name', '$email', '$address'); ";
 
         session_start();
-        $_SESSION["insert_recipe_query"] = $query;
-        $_SESSION["recipe_name"] = $recipe_name;
-
-        require_once("create_recipe_form_ingredients.php");
-
+        $_SESSION["insert_user_query"] = $query;
+        $_SESSION["user_name"] = $user_name;
         }
-        elseif (isset($_POST["add_more_ingredients"]) && $_POST["add_more_ingredients"] == "addMore"){
-            $ingredient_id = $_POST["recipeIngredient"];
-            $recipe_ingredient_value = $_POST["recipeIngredientValue"];
-            $unit_id = $_POST["unitID"];
-
-            session_start();
-            $recipe_name = $_SESSION["recipe_name"];
-
-            $query = "SET @recipe_id = (SELECT recipe_id FROM recipe WHERE recipe_name = '$recipe_name'); ";
-            $query .= "INSERT INTO recipe_ingredient ";
-            $query .= "(recipe_id, ingredient_id, recipe_ingredient_value, unit_id) ";
-            $query .= "VALUES ";
-            $query .= "(@recipe_id, '$ingredient_id', '$recipe_ingredient_value', '$unit_id'); ";
-            
-            $_SESSION["insert_recipe_query"] .= $query;
-
-            require_once("create_recipe_form_ingredients.php");
-            
-        }
-        elseif(isset($_POST["submit_recipe"]) && $_POST["submit_recipe"] == "submitRecipe"){
+        /*elseif(isset($_POST["submit_recipe"]) && $_POST["submit_recipe"] == "submitRecipe"){
             $ingredient_id = $_POST["recipeIngredient"];
             $recipe_ingredient_value = $_POST["recipeIngredientValue"];
             $unit_id = $_POST["unitID"];
@@ -85,6 +66,15 @@
 
                 echo "<section><h1>Bonne Appetite</h1></section>";
             }
+        }*/
+
+        $result = mysqli_multi_query($connection, $query);
+
+        if($result){
+            $_SESSION["insert_user_query"] = "";
+            $_SESSION["user_name"] = "";
+
+            echo "<section><h1>Welcome!</h1></section>";
         }
 
     ?>

@@ -67,8 +67,8 @@
                         else echo "Free"
                     ?></td>
                     
-                    <td><a id="editLink" href="search_recipe_edit.php?rid=<?php echo $result_set["game_id"]; ?>">Add</a></td>
-                    <td><a id="deleteLink" href="search_recipe_results_delete.php?rid=<?php echo $result_set["game_id"]; ?>">Delete</a></td>
+                    <td><a id="editLink" href="add_game_to_library.php?rid=<?php echo $result_set["game_id"]; ?>">Add</a></td>
+                    <td><a id="deleteLink" href="add_game_remove.php?rid=<?php echo $result_set["game_id"]; ?>">Delete</a></td>
                 </tr>
                 <?php } ?>
             </tbody>

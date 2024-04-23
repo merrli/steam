@@ -19,7 +19,7 @@
     </nav>
 
     <section>
-        <h1>Welcome to Steam!!</h1>
+        <h1>Welcome to Steam!!!</h1>
         <p>This is a simplified database representation of the existing online store, meant to replicate and simulate its features to its bare bones</p>
 
         

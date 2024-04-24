@@ -26,6 +26,7 @@
             $game_query = "";
             $game_query .= "SELECT * ";
             $game_query .= "FROM game ";
+            $game_query .= "WHERE game.game_id = '$game_id'; ";
 
             //echo $game_query;
 

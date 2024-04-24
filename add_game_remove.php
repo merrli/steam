@@ -5,12 +5,12 @@
      <link rel="stylesheet" href="styles/styles.css">
     <title>Recipe Book - Search/Edit a Recipe</title>
 </head>
-
 <body>
     <header>
         <h1>Search/Edit a Recipe</h1>
     </header>
-     <nav>
+    
+    <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create Recipe</a></li>
@@ -18,22 +18,34 @@
             <li><a href="ingredients_management.php">Ingredients Management</a></li>
         </ul>
     </nav>
-    <?php if(isset($_GET["rid"])){
-        $recipe_id = $_GET["rid"];
-        
-        $delete_query = "";
-        $delete_query .= "DELETE FROM recipe_rating where recipe_id = '$recipe_id'; ";
-        $delete_query .= "DELETE FROM recipe_ingredient where recipe_id = '$recipe_id'; ";
-        $delete_query .= "DELETE FROM recipe where recipe_id = '$recipe_id';";
-    
-        // echo $rating_query;
-    
-        $result = mysqli_multi_query($connection, $delete_query);
 
-        if($result) echo "<section><h2>Recipe Deleted!</h2></section>";
+    <?php
+        if(isset($_GET["rid"])){
+            $game_id = $_GET["rid"];
 
+            $game_query = "";
+            $game_query .= "SELECT * ";
+            $game_query .= "FROM game ";
+            $game_query .= "WHERE game.game_id = '$game_id'; ";
+
+            //echo $game_query;
+
+            $result = mysqli_query($connection, $game_query);
+
+            $game = mysqli_fetch_array($result);
         }
     ?>
+
+    <section>
+        <h2>Edit a Recipe</h2>
+        <form action="add_game_remove_update.php?rid=<?php echo $game["game_id"]; ?>" method="post" id="addGameToLibraryForm">
+            <label for="userName">Enter username:</label>
+                <input type="text" id="userName" name="userName" value = "">
+                
+                <button type="submit">Delete from Library</button>
+        </form>
+    </section>
+
     <footer>
         <p>&copy; 2024 Recipe Book</p>
     </footer>

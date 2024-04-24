@@ -21,6 +21,7 @@
 
     <?php
         if(isset($_GET["rid"])){
+            
             $game_id = $_GET["rid"];
             $user_name = $_POST["userName"];
             $game_query = "";
@@ -44,14 +45,26 @@
             $user_id = $user["user_id"];
 
             $result = "";
-            $query = "";
-            $query .= "INSERT INTO library ";
-            $query .= "(game_id, user_id) ";
-            $query .= "VALUES ('$game_id', '$user_id')";
+            $query_check = "";
+            $query_check .= "SELECT * ";
+            $query_check .= "FROM library ";
+            $query_check .= "WHERE library.user_id = '$user_id' AND library.game_id = '$game_id'; ";
+            
+            $result = mysqli_query($connection, $query_check);
+            
+            if($result){
+                echo "<section>$game_name is already in your library!</section>";
+            }else{
+                $query = "";
+                $query .= "INSERT INTO library ";
+                $query .= "(game_id, user_id) ";
+                $query .= "VALUES ('$game_id', '$user_id')";
 
-            $result= mysqli_multi_query($connection, $query);
+                $add_result= mysqli_multi_query($connection, $query);
 
-            if($result) echo "<section>Your $game_name has been added to your library!</section>";
+                if($add_result) echo "<section>$game_name has been added to your library!</section>";
+            } 
+
         }
     ?>
 

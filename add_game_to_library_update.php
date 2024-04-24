@@ -22,29 +22,40 @@
     <?php
         if(isset($_GET["rid"])){
             $game_id = $_GET["rid"];
-
+            $user_name = $_POST["userName"];
             $game_query = "";
             $game_query .= "SELECT * ";
             $game_query .= "FROM game ";
-
-            //echo $game_query;
+            $game_query .= "WHERE game_id = $game_id ";
 
             $result = mysqli_query($connection, $game_query);
-
             $game = mysqli_fetch_array($result);
+
+            $result = "";
+            $user_query = "";
+            $user_query .= "SELECT * ";
+            $user_query .= "FROM user ";
+            $user_query .= "WHERE user_username = '$user_name' ";
+
+            $result = mysqli_query($connection, $user_query);
+            $user = mysqli_fetch_array($result);
+            //echo $user_query;
+            $game_name = $game["game_title"];
+            $user_id = $user["user_id"];
+
+            $result = "";
+            $query = "";
+            $query .= "INSERT INTO library ";
+            $query .= "(game_id, user_id) ";
+            $query .= "VALUES ('$game_id', '$user_id')";
+
+            $result= mysqli_multi_query($connection, $query);
+
+            if($result) echo "<section>Your $game_name has been added to your library!</section>";
         }
     ?>
 
-    <section>
-        <h2>Edit a Recipe</h2>
-        <form action="add_game_to_library_update.php?rid=<?php echo $game["game_id"]; ?>" method="post" id="addGameToLibraryForm">
-            <label for="userName">Enter username:</label>
-                <input type="text" id="userName" name="userName" value = "">
-                
-                <button type="submit">Add to Library</button>
-        </form>
-    </section>
-
+    
     <footer>
         <p>&copy; 2024 Recipe Book</p>
     </footer>

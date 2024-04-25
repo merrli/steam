@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 12:40 AM
+-- Generation Time: Apr 25, 2024 at 08:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -146,7 +146,8 @@ INSERT INTO `library` (`library_id`, `game_id`, `user_id`) VALUES
 (4, 3, 1),
 (5, 4, 2),
 (6, 3, 2),
-(7, 6, 2);
+(7, 6, 2),
+(8, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_first_name`, `user_last_name`, `user_username`, `user_displayname`, `user_email`, `user_shipping_address`, `user_balance`, `user_country`) VALUES
 (1, 'Sean', 'Bolles', 'sbolles', 'sbolles', 'sbolles@gmail.com', '44 Horsey Dr., Belling, MA', 100, 'United States'),
-(2, 'Vincent', 'Tran', 'vtran', 'vtran', 'vtran@gmail.com', '34 Twinkle Rd., Franklin, MA', 1000, 'United States');
+(2, 'Vincent', 'Tran', 'vtran', 'vtran', 'vtran@gmail.com', '34 Twinkle Rd., Franklin, MA', 1000, 'United States'),
+(3, 'Jim', 'Blake', 'jblake', 'jblake', 'jblake@gmail.com', '21 Cheyanne Dr., Foxboro, MA', 100000000, 'United States'),
+(4, 'Chey', 'Blake', 'cblake', 'cblake', 'cblake@gmail.com', '970 Sprite Lane, Medway, MA', 15000, 'United States');
 
 --
 -- Indexes for dumped tables
@@ -318,7 +321,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `paymentmethod`
@@ -336,7 +339,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

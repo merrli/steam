@@ -13,9 +13,9 @@
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="user_account.php">Create Recipe</a></li>
-            <li><a href="search_recipe.php">Search a Recipe</a></li>         
-            <li><a href="ingredients_management.php">Ingredients Management</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
+            <li><a href = "game_dev_account.php">Create a Dev</a></li>
+            <li><a href="add_game.php">Add a Game</a></li>
         </ul>
     </nav>
 
@@ -62,7 +62,16 @@
 
                 $add_result= mysqli_multi_query($connection, $query);
 
+                /*$query = "";
+                $query .= "INSERT INTO transaction ";
+                $query .= "(transaction_date, trasaction_tax, payment_id, game_id, user_id) ";
+                $query .= "VALUES ('2024-04-23', '1', '1', '$game_id', '$user_id')";
+
+                $add_transaction= mysqli_multi_query($connection, $query);
+                */
+
                 if($add_result) echo "<section>$game_name has been added to your library!</section>";
+                //if($add_transaction) echo "<section>A transaction has been filed</section>";
             } 
 
         }

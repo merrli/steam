@@ -4,7 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Steam - Create a User</title>
+    <title>NotSteam - Create a User</title>
 </head>
 <body>
     <header>
@@ -42,47 +42,19 @@
         $_SESSION["insert_user_query"] = $query;
         $_SESSION["user_name"] = $user_name;
         }
-        /*elseif(isset($_POST["submit_recipe"]) && $_POST["submit_recipe"] == "submitRecipe"){
-            $ingredient_id = $_POST["recipeIngredient"];
-            $recipe_ingredient_value = $_POST["recipeIngredientValue"];
-            $unit_id = $_POST["unitID"];
-
-            session_start();
-            $recipe_name = $_SESSION["recipe_name"];
-
-            $query = "SET @recipe_id = (SELECT recipe_id FROM recipe WHERE recipe_name = '$recipe_name'); ";
-            $query .= "INSERT INTO recipe_ingredient ";
-            $query .= "(recipe_id, ingredient_id, recipe_ingredient_value, unit_id) ";
-            $query .= "VALUES ";
-            $query .= "(@recipe_id, '$ingredient_id', '$recipe_ingredient_value', '$unit_id'); ";
-            
-            $_SESSION["insert_recipe_query"] .= $query; 
-
-            $final_query = $_SESSION["insert_recipe_query"];
-            
-            $result = mysqli_multi_query($connection, $final_query);
-
-            if($result){
-                $_SESSION["insert_recipe_query"] = "";
-                $_SESSION["recipe_name"] = "";
-
-                echo "<section><h1>Bonne Appetite</h1></section>";
-            }
-        }*/
-
         $result = mysqli_multi_query($connection, $query);
 
         if($result){
             $_SESSION["insert_user_query"] = "";
             $_SESSION["user_name"] = "";
 
-            echo "<section><h1>Welcome!</h1></section>";
+            echo "<section><h1>Welcome!</h1></section>" ;
         }
 
     ?>
 
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

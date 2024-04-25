@@ -4,11 +4,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Steam - Create a User</title>
+    <title>NotSteam - Add/Delete a Game to Library</title>
 </head>
 <body>
     <header>
-        <h1>Create a user</h1>
+        <h1>Add/Delete a Game to Library</h1>
     </header>
     
     <nav>
@@ -77,7 +77,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

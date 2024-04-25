@@ -3,11 +3,11 @@
 <html>
 <head>
      <link rel="stylesheet" href="styles/styles.css">
-    <title>Recipe Book - Search/Edit a Recipe</title>
+    <title>NotSteam - Add/Delete a Game to Library</title>
 </head>
 <body>
     <header>
-        <h1>Search/Edit a Recipe</h1>
+        <h1>Add/Delete a Game to Librarye</h1>
     </header>
     
     <nav>
@@ -48,7 +48,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

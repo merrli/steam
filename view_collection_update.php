@@ -4,22 +4,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Steam - Create a User</title>
+    <title>NotSteam - View Collection</title>
 </head>
 <body>
-    <header>
-        <h1>Create a user</h1>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="user_account.php">Create a User</a></li>
-            <li><a href = "game_dev_account.php">Create a Dev</a></li>
-            <li><a href="add_game.php">Add a Game</a></li> 
-            <li><a href = "view_collection.php">View Collection</a></li> 
-        </ul>
-    </nav>
     <?php
         if(isset($_POST["userName"]) && $_POST["searchUser"] == "searchUser" ){
            $user_username = $_POST["userName"];
@@ -45,6 +32,20 @@
            $result = mysqli_query($connection, $query);
         }
     ?>
+    <header>
+        <h1>Viewing <?php echo $user["user_displayname"]?>'s collection</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
+            <li><a href = "game_dev_account.php">Create a Dev</a></li>
+            <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href = "view_collection.php">View Collection</a></li> 
+        </ul>
+    </nav>
+    
     <section>
         <table>
             <thead>
@@ -71,7 +72,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

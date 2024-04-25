@@ -4,7 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Steam - User Account</title>
+    <title>NotSteam - Create a user</title>
 </head>
 <body>
     <header>

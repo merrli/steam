@@ -16,7 +16,7 @@
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href = "game_setup.php">Create a Game</a></li>
-            <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href="add_game.php">Add a Game to Library</a></li> 
             <li><a href = "view_collection.php">View Collection</a></li>
         </ul>
     </nav>

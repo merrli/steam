@@ -3,11 +3,11 @@
 <html>
 <head>  
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Recipe Book - Ingredients Management</title>
+    <title>NotSteam - Add/Delete a Game to Library</title>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Recipe Book Page</h1>
+        <h1>Add/Delete a Game to Library</h1>
     </header>
     
     <nav>
@@ -16,6 +16,7 @@
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href = "view_collection.php">View Collection</a></li>
         </ul>
     </nav>
 
@@ -53,7 +54,7 @@
                   
 
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

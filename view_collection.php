@@ -3,11 +3,11 @@
 <html>
 <head>
      <link rel="stylesheet" href="styles/styles.css">
-    <title>NotSteam - Add/Delete a Game to Library</title>
+    <title>NotSteam - View Collection</title>
 </head>
 <body>
     <header>
-        <h1>Add/Delete a Game to Librarye</h1>
+        <h1>Search for a user's collection</h1>
     </header>
     
     <nav>
@@ -16,34 +16,34 @@
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href="add_game.php">Add a Game</a></li> 
-            <li><a href = "view_collection.php">View Collection</a></li>
+            <li><a href = "view_collection.php">View Collection</a></li> 
         </ul>
     </nav>
 
     <?php
         if(isset($_GET["rid"])){
-            $game_id = $_GET["rid"];
+            $user_id = $_GET["rid"];
 
-            $game_query = "";
-            $game_query .= "SELECT * ";
-            $game_query .= "FROM game ";
-            $game_query .= "WHERE game.game_id = '$game_id'; ";
+            $user_query = "";
+            $user_query .= "SELECT * ";
+            $user_query .= "FROM user ";
+            $user_query .= "WHERE user.user_id = '$user_id'; ";
 
-            //echo $game_query;
+            //echo $user_query;
 
-            $result = mysqli_query($connection, $game_query);
+            $result = mysqli_query($connection, $user_query);
 
             $game = mysqli_fetch_array($result);
         }
     ?>
 
     <section>
-        <h2>Edit a Recipe</h2>
-        <form action="add_game_to_library_update.php?rid=<?php echo $game["game_id"]; ?>" method="post" id="addGameToLibraryForm">
+        <h2>Search for a User's Library</h2>
+        <form action="view_collection_update.php" method="post" id="viewUserCollection">
             <label for="userName">Enter username:</label>
                 <input type="text" id="userName" name="userName" value = "">
                 
-                <button type="submit">Add to Library</button>
+                <button type="submit" name = "searchUser" value = "searchUser">View Collection</button>
         </form>
     </section>
 

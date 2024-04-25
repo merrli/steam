@@ -4,11 +4,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Steam - Create a User</title>
+    <title>NotSteam - Create a dev</title>
 </head>
 <body>
     <header>
-        <h1>Create a user</h1>
+        <h1>Create a dev</h1>
     </header>
     
     <nav>
@@ -16,7 +16,8 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
-            <li><a href="add_game.php">Add a Game</a></li>   
+            <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href = "view_collection.php">View Collection</a></li>
         </ul>
     </nav>
     <?php
@@ -36,34 +37,6 @@
         $_SESSION["insert_dev_query"] = $query;
         $_SESSION["studioName"] = $studio_name;
         }
-        /*elseif(isset($_POST["submit_recipe"]) && $_POST["submit_recipe"] == "submitRecipe"){
-            $ingredient_id = $_POST["recipeIngredient"];
-            $recipe_ingredient_value = $_POST["recipeIngredientValue"];
-            $unit_id = $_POST["unitID"];
-
-            session_start();
-            $recipe_name = $_SESSION["recipe_name"];
-
-            $query = "SET @recipe_id = (SELECT recipe_id FROM recipe WHERE recipe_name = '$recipe_name'); ";
-            $query .= "INSERT INTO recipe_ingredient ";
-            $query .= "(recipe_id, ingredient_id, recipe_ingredient_value, unit_id) ";
-            $query .= "VALUES ";
-            $query .= "(@recipe_id, '$ingredient_id', '$recipe_ingredient_value', '$unit_id'); ";
-            
-            $_SESSION["insert_recipe_query"] .= $query; 
-
-            $final_query = $_SESSION["insert_recipe_query"];
-            
-            $result = mysqli_multi_query($connection, $final_query);
-
-            if($result){
-                $_SESSION["insert_recipe_query"] = "";
-                $_SESSION["recipe_name"] = "";
-
-                echo "<section><h1>Bonne Appetite</h1></section>";
-            }
-        }*/
-
         $result = mysqli_multi_query($connection, $query);
 
         if($result){
@@ -76,7 +49,7 @@
     ?>
 
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

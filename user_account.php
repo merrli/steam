@@ -4,7 +4,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Steam - User Account</title>
+    <title>NotSteam - Create a user</title>
 </head>
 <body>
     <header>
@@ -13,10 +13,11 @@
     
     <nav>
         <ul>
-        <li><a href="index.php">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
-            <li><a href="add_game.php">Add a Game</a></li>   
+            <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href = "view_collection.php">View Collection</a></li>
         </ul>
     </nav>
     <section>

@@ -3,19 +3,20 @@
 <html>
 <head>
      <link rel="stylesheet" href="styles/styles.css">
-    <title>Recipe Book - Search/Edit a Recipe</title>
+    <title>NotSteam - Add/Delete a Game to Library</title>
 </head>
 
 <body>
     <header>
-        <h1>Search/Edit a Recipe</h1>
+        <h1>Add/Delete a Game to Library</h1>
     </header>
      <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="user_account.php">Create Recipe</a></li>
-            <li><a href="search_recipe.php">Search a Recipe</a></li>         
-            <li><a href="ingredients_management.php">Ingredients Management</a></li>
+            <li><a href="user_account.php">Create a User</a></li>
+            <li><a href = "game_dev_account.php">Create a Dev</a></li>
+            <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href = "view_collection.php">View Collection</a></li>
         </ul>
     </nav>
     <?php if(isset($_GET["rid"])){
@@ -54,7 +55,7 @@
         }
     ?>
     <footer>
-        <p>&copy; 2024 Recipe Book</p>
+        <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>
     </footer>
 </body>
 </html>

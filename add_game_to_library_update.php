@@ -63,16 +63,16 @@
 
                 $add_result= mysqli_multi_query($connection, $query);
 
-                /*$query = "";
+                $query = "";
                 $query .= "INSERT INTO transaction ";
                 $query .= "(transaction_date, trasaction_tax, payment_id, game_id, user_id) ";
-                $query .= "VALUES ('2024-04-23', '1', '1', '$game_id', '$user_id')";
+                $query .= "VALUES (NOW(), '1', '1', '$game_id', '$user_id')";
 
                 $add_transaction= mysqli_multi_query($connection, $query);
-                */
+                
 
                 if($add_result) echo "<section>$game_name has been added to your library!</section>";
-                //if($add_transaction) echo "<section>A transaction has been filed</section>";
+                if($add_transaction) echo "<section>A transaction has been filed</section>";
             } 
 
         }

@@ -1,3 +1,4 @@
+<?php require_once("includes/connection.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>  
@@ -22,10 +23,11 @@
     </nav>
 
     <section>
-        <h1>Welcome to Steam!!!</h1>
-        <p>This is a simplified database representation of the existing online store, meant to replicate and simulate its features to its bare bones</p>
-
-        
+        <form action = "edit_user_update.php" method = "post" id = "editUser">
+            <h2>Find your profile</h2>
+            <label for="userName">Enter your username:</label>
+            <input type="text" id="userName" name="userName">
+        <button type="submit" name="searchUser" value="searchUser">Edit user</button>  
     </section>
 
     <footer>

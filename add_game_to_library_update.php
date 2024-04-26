@@ -15,7 +15,8 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="user_account.php">Create a User</a></li>
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
-            <li><a href="add_game.php">Add a Game</a></li> 
+            <li><a href = "game_setup.php">Create a Game</a></li>
+            <li><a href="add_game.php">Add a Game to Library</a></li> 
             <li><a href = "view_collection.php">View Collection</a></li>
         </ul>
     </nav>
@@ -53,9 +54,9 @@
             
             $result = mysqli_query($connection, $query_check);
             
-            if($result){
+            if(mysqli_num_rows($result) > 0){
                 echo "<section>$game_name is already in your library!</section>";
-            }else{
+            }else{            
                 $query = "";
                 $query .= "INSERT INTO library ";
                 $query .= "(game_id, user_id) ";
@@ -70,7 +71,6 @@
 
                 $add_transaction= mysqli_multi_query($connection, $query);
                 
-
                 if($add_result) echo "<section>$game_name has been added to your library!</section>";
                 if($add_transaction) echo "<section>A transaction has been filed</section>";
             } 

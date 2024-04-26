@@ -4,11 +4,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles/styles.css">
-    <title>NotSteam - Create a User</title>
+    <title>NotSteam - Create a dev</title>
 </head>
 <body>
     <header>
-        <h1>Create a user</h1>
+        <h1>Create a dev</h1>
     </header>
     
     <nav>
@@ -25,31 +25,30 @@
 
         //this will handle the preparation of the first recipe information
         if(isset($_POST["next"]) && $_POST["next"] == "next"){
-            $user_name = $_POST["userName"];
-            $display_name = $_POST["displayName"];
-            $first_name = $_POST["firstName"];
-            $last_name = $_POST["lastName"];
-            $email = $_POST["email"]; 
-            $address = $_POST["shippingAddress"];
+            $game_title = $_POST["gameTitle"];
+            $pub_date = $_POST["pubDate"];
+            $genre = $_POST["gameGenre"];
+            $age_rating = $_POST["ageRating"];
+            $game_cost = $_POST["gameCost"];
+            $game_dev = $_POST["gameDev"];
 
             $query = " ";
-            $query .= "INSERT INTO user ";
-            $query .= "(user_first_name, user_last_name, user_username, user_displayname, user_email, user_shipping_address) ";
+            $query .= "INSERT INTO game ";
+            $query .= "(game_title, pub_date, genre_id, age_rating_id, game_cost, gamedev_id) ";
             $query .= "VALUES ";
-            $query .= "('$first_name', '$last_name', '$user_name', '$display_name', '$email', '$address'); ";
-            
+            $query .= "('$game_title', '$pub_date','$genre', '$age_rating', '$game_cost', '$game_dev'); ";
 
         session_start();
-        $_SESSION["insert_user_query"] = $query;
-        $_SESSION["user_name"] = $user_name;
+        $_SESSION["insert_game_query"] = $query;
+        $_SESSION["gameTitle"] = $game_dev;
         }
         $result = mysqli_multi_query($connection, $query);
 
         if($result){
-            $_SESSION["insert_user_query"] = "";
-            $_SESSION["user_name"] = "";
+            $_SESSION["insert_game_query"] = "";
+            $_SESSION["gameTitle"] = "";
 
-            echo "<section><h1>Welcome!</h1></section>" ;
+            echo "<section><h1>Game has been Added to Steam!</h1></section>";
         }
 
     ?>

@@ -23,7 +23,7 @@
     </nav>
     <?php
 
-        //this will handle the preparation of the first recipe information
+
         if(isset($_POST["next"]) && $_POST["next"] == "next"){
             $game_dev = $_POST["studioName"];
             $studio_country = $_POST["country"];

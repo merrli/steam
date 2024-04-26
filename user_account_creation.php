@@ -23,7 +23,7 @@
     </nav>
     <?php
 
-        //this will handle the preparation of the first recipe information
+
         if(isset($_POST["next"]) && $_POST["next"] == "next"){
             $user_name = $_POST["userName"];
             $display_name = $_POST["displayName"];

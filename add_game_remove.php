@@ -39,7 +39,7 @@
     ?>
 
     <section>
-        <h2>Edit a Recipe</h2>
+        <h2>Remove a Game</h2>
         <form action="add_game_remove_update.php?rid=<?php echo $game["game_id"]; ?>" method="post" id="addGameToLibraryForm">
             <label for="userName">Enter username:</label>
                 <input type="text" id="userName" name="userName" value = "">

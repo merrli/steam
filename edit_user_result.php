@@ -26,28 +26,36 @@
     
     <?php
         if(isset($_GET["rid"])){
-            $user_id = $_GET["rid"];
+            try{
+                $user_id = $_GET["rid"];
 
-            $display_name = $_POST["displayName"];
-            $first_name = $_POST["firstName"];
-            $last_name = $_POST["lastName"];
-            $email = $_POST["email"];
-            $address = $_POST["address"];
-            $country = $_POST["userCountry"];
-            
-            $query = "";
-            $query .= "UPDATE user SET ";
-            $query .= "user_displayname = '$display_name', ";
-            $query .= "user_first_name = '$first_name', ";
-            $query .= "user_last_name = '$last_name', ";
-            $query .= "user_email = '$email', ";
-            $query .= "user_shipping_address = '$address', ";
-            $query .= "user_country = '$country' ";
-            $query .= "WHERE user_id = '$user_id    '; ";
+                $display_name = $_POST["displayName"];
+                $first_name = $_POST["firstName"];
+                $last_name = $_POST["lastName"];
+                $email = $_POST["email"];
+                $address = $_POST["address"];
+                $country = $_POST["userCountry"];
+                
+                $query = "";
+                $query .= "UPDATE user SET ";
+                $query .= "user_displayname = '$display_name', ";
+                $query .= "user_first_name = '$first_name', ";
+                $query .= "user_last_name = '$last_name', ";
+                $query .= "user_email = '$email', ";
+                $query .= "user_shipping_address = '$address', ";
+                $query .= "user_country = '$country' ";
+                $query .= "WHERE user_id = '$user_id    '; ";
 
-            $result= mysqli_query($connection, $query);
+                $result= mysqli_query($connection, $query);
 
-            if($result) echo "<section>Your changes has been saved!</section>";
+                if(!$result){
+                    throw new Exception("Error while updating a user.");
+                }
+
+                if($result) echo "<section>Your changes has been saved!</section>";
+            } catch(Exception $e){
+                echo "Error: ".$e->getMessage();
+            }
         }
     ?>
     <footer>

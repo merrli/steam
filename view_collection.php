@@ -30,12 +30,17 @@
             $user_query .= "SELECT * ";
             $user_query .= "FROM user ";
             $user_query .= "WHERE user.user_id = '$user_id'; ";
-
-            //echo $user_query;
-
+            try{
             $result = mysqli_query($connection, $user_query);
-
-            $game = mysqli_fetch_array($result);
+                if($result){
+                    $game = mysqli_fetch_array($result);
+                }
+                else{
+                    throw new Exception("Error occured while fetching user data.");
+                }
+            } catch(Exception $e){
+                echo "Error: " . $e->getMessage();
+            }
         }
     ?>
 

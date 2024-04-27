@@ -24,18 +24,22 @@
     </nav>
 
     <?php
-        if(isset($_POST["userName"]) && $_POST["searchUser"] == "searchUser"){
-            $user_name = $_POST["userName"];
+        try{
+            if(isset($_POST["userName"]) && $_POST["searchUser"] == "searchUser"){
+                $user_name = $_POST["userName"];
 
-            $user_query = "";
-            $user_query .= "SELECT * ";
-            $user_query .= "FROM user ";
-            $user_query .= "WHERE user.user_username = '$user_name'; ";
+                $user_query = "";
+                $user_query .= "SELECT * ";
+                $user_query .= "FROM user ";
+                $user_query .= "WHERE user.user_username = '$user_name'; ";
 
-            $result = mysqli_query($connection, $user_query);
+                $result = mysqli_query($connection, $user_query);
 
-            $user = mysqli_fetch_array($result);
-        }
+                if(!$result){
+                    throw new Exception("Error occured while fetching user data.");
+                }
+
+                $user = mysqli_fetch_array($result);
     ?>
 
     <section>
@@ -61,6 +65,13 @@
             <button type="submit" href = "edit_user_result.php?rid=<?php echo $user["user_id"];?>">Save Changes</button>
         
     </section>
+
+    <?php
+            }
+        } catch(Exception $e){
+            echo "Error: ".$e->getMessage();
+        }
+    ?>
 
     <footer>
         <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>

@@ -39,20 +39,22 @@
             $query .= "VALUES ";
             $query .= "('$first_name', '$last_name', '$user_name', '$display_name', '$email', '$address'); ";
             
+            session_start();
+            $_SESSION["insert_user_query"] = $query;
+            $_SESSION["user_name"] = $user_name;
 
-        session_start();
-        $_SESSION["insert_user_query"] = $query;
-        $_SESSION["user_name"] = $user_name;
+            try{
+                $result = mysqli_multi_query($connection, $query);
+                if($result){
+                    $_SESSION["insert_user_query"] = "";
+                    $_SESSION["user_name"] = "";
+
+                    echo "<section><h1>Welcome!</h1></section>" ;
+                }
+            } catch (Exception $e) {
+                echo "Error: ". $e->getMessage() ."";
+            }
         }
-        $result = mysqli_multi_query($connection, $query);
-
-        if($result){
-            $_SESSION["insert_user_query"] = "";
-            $_SESSION["user_name"] = "";
-
-            echo "<section><h1>Welcome!</h1></section>" ;
-        }
-
     ?>
 
     <footer>

@@ -20,16 +20,20 @@
            $user = mysqli_fetch_array($result);
            $userid = $user["user_id"];
 
-           $query = "";
-           $query .= "SELECT DISTINCT * ";
-           $query .= "FROM game ";
-           $query .= "INNER JOIN genre ON game.genre_id = genre.genre_id ";
-           $query .= "INNER JOIN age_rating on game.age_rating_id = age_rating.age_rating_id ";
-           $query .= "INNER JOIN gamedev on game.gamedev_id = gamedev.gamedev_id ";
-           $query .= "INNER JOIN library on game.game_id = library.game_id ";
-           $query .= "WHERE game.game_id = library.game_id AND library.user_id = '$userid';";
-           
-           $result = mysqli_query($connection, $query);
+           try{
+                $query = "";
+                $query .= "SELECT DISTINCT * ";
+                $query .= "FROM game ";
+                $query .= "INNER JOIN genre ON game.genre_id = genre.genre_id ";
+                $query .= "INNER JOIN age_rating on game.age_rating_id = age_rating.age_rating_id ";
+                $query .= "INNER JOIN gamedev on game.gamedev_id = gamedev.gamedev_id ";
+                $query .= "INNER JOIN library on game.game_id = library.game_id ";
+                $query .= "WHERE game.game_id = library.game_id AND library.user_id = '$userid';";
+                
+                $result = mysqli_query($connection, $query);         
+            } catch (Exception $e) {
+                echo "Error: ". $e->getMessage();
+            }
         }
     ?>
     <header>

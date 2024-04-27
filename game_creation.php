@@ -23,33 +23,35 @@
         </ul>
     </nav>
     <?php
+        try {
+            if(isset($_POST["next"]) && $_POST["next"] == "next"){
+                $game_title = $_POST["gameTitle"];
+                $pub_date = $_POST["pubDate"];
+                $genre = $_POST["gameGenre"];
+                $age_rating = $_POST["ageRating"];
+                $game_cost = $_POST["gameCost"];
+                $game_dev = $_POST["gameDev"];
 
+                $query = " ";
+                $query .= "INSERT INTO game ";
+                $query .= "(game_title, pub_date, genre_id, age_rating_id, game_cost, gamedev_id) ";
+                $query .= "VALUES ";
+                $query .= "('$game_title', '$pub_date','$genre', '$age_rating', '$game_cost', '$game_dev'); ";
 
-        if(isset($_POST["next"]) && $_POST["next"] == "next"){
-            $game_title = $_POST["gameTitle"];
-            $pub_date = $_POST["pubDate"];
-            $genre = $_POST["gameGenre"];
-            $age_rating = $_POST["ageRating"];
-            $game_cost = $_POST["gameCost"];
-            $game_dev = $_POST["gameDev"];
+                session_start();
+                $_SESSION["insert_game_query"] = $query;
+                $_SESSION["gameTitle"] = $game_dev;
+            }
+            $result = mysqli_multi_query($connection, $query);
 
-            $query = " ";
-            $query .= "INSERT INTO game ";
-            $query .= "(game_title, pub_date, genre_id, age_rating_id, game_cost, gamedev_id) ";
-            $query .= "VALUES ";
-            $query .= "('$game_title', '$pub_date','$genre', '$age_rating', '$game_cost', '$game_dev'); ";
+            if($result){
+                $_SESSION["insert_game_query"] = "";
+                $_SESSION["gameTitle"] = "";
 
-        session_start();
-        $_SESSION["insert_game_query"] = $query;
-        $_SESSION["gameTitle"] = $game_dev;
-        }
-        $result = mysqli_multi_query($connection, $query);
-
-        if($result){
-            $_SESSION["insert_game_query"] = "";
-            $_SESSION["gameTitle"] = "";
-
-            echo "<section><h1>Game has been Added to Steam!</h1></section>";
+                echo "<section><h1>Game has been Added to Steam!</h1></section>";
+            }
+        } catch (Exception $e) {
+            echo "Error: ". $e->getMessage();
         }
 
     ?>

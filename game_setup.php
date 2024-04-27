@@ -30,55 +30,56 @@
 
                 <label for="pubDate">Enter the Publication Date: (year-month-day)</label>
                 <input type="text" id="pubDate" name="pubDate" required>
-
-                <?php
-                    $queryGenre = "SELECT genre_id, genre_name FROM genre";
-                    $result = mysqli_query($connection, $queryGenre);
-
-                ?>
  
                 <label for="gameGenre">Game Genre:</label>
                 <select id="gameGenre" name="gameGenre" required>
                     <option value="--">-- Select a Genre --</option>
-
-                    <?php while($result_set = mysqli_fetch_array($result)){ ?>
-                    <option value="<?php echo $result_set["genre_id"] ?>"><?php echo $result_set["genre_name"] ?></option>
-                    <?php } ?>
-
+                    <?php
+                    try {
+                        $queryGenre = "SELECT genre_id, genre_name FROM genre";
+                        $result = mysqli_query($connection, $queryGenre);
+                        while($result_set = mysqli_fetch_array($result)){
+                            echo "<option value='".$result_set["genre_id"]."'>".$result_set["genre_name"]."</option>";
+                        }
+                    } catch (Exception $e) {
+                        echo "Error fetching genres: " . $e->getMessage();
+                    }
+                    ?>
                 </select>
                 
-                <?php
-                    $queryAge = "SELECT age_rating_id, age_rating_name FROM age_rating";
-                    $result = mysqli_query($connection, $queryAge);
-
-                ?>
- 
                 <label for="ageRating">Age Rating:</label>
                 <select id="ageRating" name="ageRating" required>
                     <option value="--">-- Select an Age Rating --</option>
-
-                    <?php while($result_set = mysqli_fetch_array($result)){ ?>
-                    <option value="<?php echo $result_set["age_rating_id"] ?>"><?php echo $result_set["age_rating_name"] ?></option>
-                    <?php } ?>
-
+                    <?php
+                    try {
+                        $queryAge = "SELECT age_rating_id, age_rating_name FROM age_rating";
+                        $result = mysqli_query($connection, $queryAge);
+                        while($result_set = mysqli_fetch_array($result)){
+                            echo "<option value='".$result_set["age_rating_id"]."'>".$result_set["age_rating_name"]."</option>";
+                        }
+                    } catch (Exception $e) {
+                        echo "Error fetching age ratings: " . $e->getMessage();
+                    }
+                    ?>
                 </select>
 
                 <label for="gameCost">Enter your Game's Cost:</label>
                 <input type="text" id="gameCost" name="gameCost" required>
 
-                <?php
-                    $queryAge = "SELECT gamedev_ID, gamedev_name FROM gamedev";
-                    $result = mysqli_query($connection, $queryAge);
-
-                ?>
- 
                 <label for="gameDev">Game Studio:</label>
-                <select id="gameDDev" name="gameDev" required>
+                <select id="gameDev" name="gameDev" required>
                     <option value="--">-- Select a Studio --</option>
-
-                    <?php while($result_set = mysqli_fetch_array($result)){ ?>
-                    <option value="<?php echo $result_set["gamedev_ID"] ?>"><?php echo $result_set["gamedev_name"] ?></option>
-                    <?php } ?>
+                    <?php
+                    try {
+                        $queryDev = "SELECT gamedev_ID, gamedev_name FROM gamedev";
+                        $result = mysqli_query($connection, $queryDev);
+                        while($result_set = mysqli_fetch_array($result)){
+                            echo "<option value='".$result_set["gamedev_ID"]."'>".$result_set["gamedev_name"]."</option>";
+                        }
+                    } catch (Exception $e) {
+                        echo "Error fetching game studios: " . $e->getMessage();
+                    }
+                    ?>
 
                 </select>
 

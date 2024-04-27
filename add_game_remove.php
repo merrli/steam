@@ -18,11 +18,13 @@
             <li><a href = "game_setup.php">Create a Game</a></li>
             <li><a href="add_game.php">Add a Game to Library</a></li> 
             <li><a href = "view_collection.php">View Collection</a></li>
+            <li><a href = "edit_user.php">Edit Profile</a></li>
         </ul>
     </nav>
 
     <?php
         if(isset($_GET["rid"])){
+            try{
             $game_id = $_GET["rid"];
 
             $game_query = "";
@@ -30,22 +32,32 @@
             $game_query .= "FROM game ";
             $game_query .= "WHERE game.game_id = '$game_id'; ";
 
-            //echo $game_query;
-
             $result = mysqli_query($connection, $game_query);
 
+            if(!$result){
+                throw new Exception("Error occured while fetching game data.");
+            }
+
+
             $game = mysqli_fetch_array($result);
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
         }
     ?>
 
     <section>
-        <h2>Remove a Game</h2>
-        <form action="add_game_remove_update.php?rid=<?php echo $game["game_id"]; ?>" method="post" id="addGameToLibraryForm">
-            <label for="userName">Enter username:</label>
-                <input type="text" id="userName" name="userName" value = "">
-                
-                <button type="submit">Delete from Library</button>
-        </form>
+        <?php if(isset($game)) { ?>
+            <h2>Remove a Game</h2>
+            <form action="add_game_remove_update.php?rid=<?php echo $game["game_id"]; ?>" method="post" id="addGameToLibraryForm">
+                <label for="userName">Enter username:</label>
+                    <input type="text" id="userName" name="userName" value = "">
+                    
+                    <button type="submit">Delete from Library</button>
+            </form>
+        <?php } else {
+            echo "<p>No Game Found</p>";
+        } ?>
     </section>
 
     <footer>

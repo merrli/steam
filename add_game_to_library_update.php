@@ -18,63 +18,88 @@
             <li><a href = "game_setup.php">Create a Game</a></li>
             <li><a href="add_game.php">Add a Game to Library</a></li> 
             <li><a href = "view_collection.php">View Collection</a></li>
+            <li><a href = "edit_user.php">Edit Profile</a></li>
         </ul>
     </nav>
 
     <?php
         if(isset($_GET["rid"])){
-            
-            $game_id = $_GET["rid"];
-            $user_name = $_POST["userName"];
-            $game_query = "";
-            $game_query .= "SELECT * ";
-            $game_query .= "FROM game ";
-            $game_query .= "WHERE game_id = $game_id ";
+            try{
+                $game_id = $_GET["rid"];
+                $user_name = $_POST["userName"];
+                $game_query = "";
+                $game_query .= "SELECT * ";
+                $game_query .= "FROM game ";
+                $game_query .= "WHERE game_id = $game_id ";
 
-            $result = mysqli_query($connection, $game_query);
-            $game = mysqli_fetch_array($result);
+                $result = mysqli_query($connection, $game_query);
 
-            $result = "";
-            $user_query = "";
-            $user_query .= "SELECT * ";
-            $user_query .= "FROM user ";
-            $user_query .= "WHERE user_username = '$user_name' ";
+                if(!$result){
+                    throw new Exception("Error occured while fetching game data.");
+                }
 
-            $result = mysqli_query($connection, $user_query);
-            $user = mysqli_fetch_array($result);
-            //echo $user_query;
-            $game_name = $game["game_title"];
-            $user_id = $user["user_id"];
+                $game = mysqli_fetch_array($result);
 
-            $result = "";
-            $query_check = "";
-            $query_check .= "SELECT * ";
-            $query_check .= "FROM library ";
-            $query_check .= "WHERE library.user_id = '$user_id' AND library.game_id = '$game_id'; ";
-            
-            $result = mysqli_query($connection, $query_check);
-            
-            if(mysqli_num_rows($result) > 0){
-                echo "<section>$game_name is already in your library!</section>";
-            }else{            
-                $query = "";
-                $query .= "INSERT INTO library ";
-                $query .= "(game_id, user_id) ";
-                $query .= "VALUES ('$game_id', '$user_id')";
+                $result = "";
+                $user_query = "";
+                $user_query .= "SELECT * ";
+                $user_query .= "FROM user ";
+                $user_query .= "WHERE user_username = '$user_name' ";
 
-                $add_result= mysqli_multi_query($connection, $query);
+                $result = mysqli_query($connection, $user_query);
 
-                $query = "";
-                $query .= "INSERT INTO transaction ";
-                $query .= "(transaction_date, trasaction_tax, payment_id, game_id, user_id) ";
-                $query .= "VALUES (NOW(), '1', '1', '$game_id', '$user_id')";
+                if(!$result){
+                    throw new Exception("Error occured while fetching user data.");
+                }
 
-                $add_transaction= mysqli_multi_query($connection, $query);
+                $user = mysqli_fetch_array($result);
+
+                $game_name = $game["game_title"];
+                $user_id = $user["user_id"];
+
+                $result = "";
+                $query_check = "";
+                $query_check .= "SELECT * ";
+                $query_check .= "FROM library ";
+                $query_check .= "WHERE library.user_id = '$user_id' AND library.game_id = '$game_id'; ";
                 
-                if($add_result) echo "<section>$game_name has been added to your library!</section>";
-                if($add_transaction) echo "<section>A transaction has been filed</section>";
-            } 
+                $result = mysqli_query($connection, $query_check);
 
+                if(!$result){
+                    throw new Exception("Error occured while checking the library database.");
+                }
+                
+                if(mysqli_num_rows($result) > 0){
+                    echo "<section>$game_name is already in your library!</section>";
+                }else{            
+                    $query = "";
+                    $query .= "INSERT INTO library ";
+                    $query .= "(game_id, user_id) ";
+                    $query .= "VALUES ('$game_id', '$user_id')";
+
+                    $add_result= mysqli_multi_query($connection, $query);
+                    
+                    if(!$add_result){
+                        throw new Exception("Error occurred while adding a game to the library.");
+                    }
+
+                    $query = "";
+                    $query .= "INSERT INTO transaction ";
+                    $query .= "(transaction_date, transaction_tax, payment_id, game_id, user_id) ";
+                    $query .= "VALUES (NOW(), '1', '1', '$game_id', '$user_id')";
+
+                    $add_transaction= mysqli_multi_query($connection, $query);
+
+                    if(!$add_transaction){
+                        throw new Exception("Error occurred while creating a transaction.");
+                    }
+                    
+                    if($add_result) echo "<section>$game_name has been added to your library!</section>";
+                    if($add_transaction) echo "<section>A transaction has been filed</section>";
+                } 
+            } catch(Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
         }
     ?>
 

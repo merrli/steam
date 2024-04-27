@@ -23,6 +23,7 @@
 
     <?php
         if(isset($_GET["rid"])){
+            try{
             $game_id = $_GET["rid"];
 
             $game_query = "";
@@ -30,12 +31,14 @@
             $game_query .= "FROM game ";
             $game_query .= "WHERE game.game_id = '$game_id'; ";
 
-            //echo $game_query;
-
             $result = mysqli_query($connection, $game_query);
 
+            if(!$result){
+                throw new Exception("Error occured while checking the game data.");
+            }
+
             $game = mysqli_fetch_array($result);
-        }
+        
     ?>
 
     <section>
@@ -47,6 +50,12 @@
                 <button type="submit">Add to Library</button>
         </form>
     </section>
+    <?php
+            } catch (Exception $e){
+                echo "Error: " . $e->getMessage();
+            }
+        }
+    ?>
 
     <footer>
         <p>&copy; 2024 NotSteam by Vincent Tran and Sean Bolles</p>

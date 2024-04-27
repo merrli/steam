@@ -18,7 +18,8 @@
             <li><a href = "game_dev_account.php">Create a Dev</a></li>
             <li><a href = "game_setup.php">Create a Game</a></li>
             <li><a href="add_game.php">Add a Game to Library</a></li> 
-            <li><a href = "view_collection.php">View Collection</a></li>   
+            <li><a href = "view_collection.php">View Collection</a></li>
+            <li><a href = "edit_user.php">Edit Profile</a></li>   
         </ul>
     </nav>
     <?php
@@ -30,17 +31,21 @@
 
            if($rating_id == "--") $rating_id = "";
 
-           $query = "";
-           $query .= "SELECT DISTINCT * ";
-           $query .= "FROM game ";
-           $query .= "INNER JOIN genre ON game.genre_id = genre.genre_id ";
-           $query .= "INNER JOIN age_rating on game.age_rating_id = age_rating.age_rating_id ";
-           $query .= "INNER JOIN gamedev on game.gamedev_id = gamedev.gamedev_id ";
+           try{
+                $query = "";
+                $query .= "SELECT DISTINCT * ";
+                $query .= "FROM game ";
+                $query .= "INNER JOIN genre ON game.genre_id = genre.genre_id ";
+                $query .= "INNER JOIN age_rating on game.age_rating_id = age_rating.age_rating_id ";
+                $query .= "INNER JOIN gamedev on game.gamedev_id = gamedev.gamedev_id ";
 
-           // echo $query;
-
-           $result = mysqli_query($connection, $query);
-           
+                $result = mysqli_query($connection, $query);
+                if(!$result){
+                    throw new Exception("Query failed: " . mysqli_error($connection));
+                }
+            } catch(Exception $e){
+                echo "Error: " . $e->getMessage();
+            }
         }
     ?>
     <section>
@@ -57,7 +62,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample data, replace with actual records from your database -->
 
             <?php while($result_set = mysqli_fetch_array($result)) { ?>
                 <tr>

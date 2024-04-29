@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Add/Delete a Game to Librarye</h1>
+        <h1>Add/Delete a Game to Library</h1>
     </header>
     
     <nav>
